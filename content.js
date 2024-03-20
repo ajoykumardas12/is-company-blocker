@@ -22,11 +22,11 @@ function hideJobPosting(jobPosting) {
 
 // Function to traverse the DOM and hide job postings
 function hideContent() {
-  const jobPostings = document.getElementsByClassName("individual_internship");
+  const jobPostings = document.querySelectorAll(".individual_internship");
 
   for (const jobPosting of jobPostings) {
     const companyName = jobPosting
-      .getElementsByClassName("company_and_premium")[0]
+      .querySelectorAll(".company_and_premium")[0]
       ?.innerText.toLowerCase();
 
     if (companyName && isBlocked(companyName)) {
