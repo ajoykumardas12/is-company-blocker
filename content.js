@@ -26,9 +26,19 @@ function hideJobPosting(jobPosting) {
 
   // Create a badge element
   const badge = document.createElement("div");
-  badge.textContent =
-    "Hidden: This job posting has been hidden by IS Company Blocker Extension.";
+  badge.textContent = "Hidden by IS Company Blocker.";
   badge.classList.add("individual_internship", "hidden-badge");
+
+  // Create button to show job posting on click
+  const showJobPostingButton = document.createElement("button");
+  showJobPostingButton.textContent = "Show";
+  showJobPostingButton.classList.add("show-posting-button");
+  showJobPostingButton.addEventListener("click", () => {
+    jobPosting.classList.toggle("hidden-job-posting");
+    badge.remove();
+  });
+
+  badge.appendChild(showJobPostingButton);
 
   // Append the badge to the job posting element
   insertAfter(jobPosting, badge);
