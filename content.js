@@ -11,7 +11,7 @@ const blockedCompanies = blockedList.map((company) => company.toLowerCase());
 
 // Function to check if a company is blocked
 function isBlocked(company) {
-  return blockedCompanies.some((blocked) => company.includes(blocked));
+  return blockedCompanies.some((blockedCompany) => company === blockedCompany);
 }
 
 // Function to hide a job posting
