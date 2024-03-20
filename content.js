@@ -15,22 +15,24 @@ function isBlocked(company) {
 }
 
 // Function to hide a job posting
-function hideJobPosting(a) {
-  const jobPosting =
-    a.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+function hideJobPosting(jobPosting) {
   jobPosting.style.display = "none";
 }
 
-// Traverse the DOM and hide job postings
+// Function to traverse the DOM and hide job postings
 function hideContent() {
-  const anchors = document.getElementsByTagName("a");
-  for (const anchor of anchors) {
-    const text = anchor.textContent.toLowerCase();
-    if (isBlocked(text)) {
-      hideJobPosting(anchor);
+  const jobPostings = document.getElementsByClassName("individual_internship");
+
+  for (const jobPosting of jobPostings) {
+    const companyName = jobPosting
+      .getElementsByClassName("company_and_premium")[0]
+      ?.innerText.toLowerCase();
+
+    if (companyName && isBlocked(companyName)) {
+      hideJobPosting(jobPosting);
     }
   }
 }
 
-// Call the hideContent function on page load
+// Call the function to hide job postings on page load
 window.addEventListener("load", hideContent);
