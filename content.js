@@ -6,12 +6,13 @@ const blockedList = [
   "Blackcoffer",
 ];
 
-// Convert company names to lowercase
+// Convert company names to lowercase and create new Set
 const blockedCompanies = blockedList.map((company) => company.toLowerCase());
+const blockedCompaniesSet = new Set(blockedCompanies);
 
 // Function to check if a company is blocked
 function isBlocked(company) {
-  return blockedCompanies.some((blockedCompany) => company === blockedCompany);
+  return blockedCompaniesSet.has(company.toLowerCase());
 }
 
 // Function to hide a job posting
