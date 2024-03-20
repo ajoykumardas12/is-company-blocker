@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "IS company blocker",
+  "version": "1.0",
+  "description": "Block companies at Internshala",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["*://*.internshala.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.internshala.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
