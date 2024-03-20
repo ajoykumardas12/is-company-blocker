@@ -15,9 +15,23 @@ function isBlocked(company) {
   return blockedCompaniesSet.has(company.toLowerCase());
 }
 
+// Function to insert new node after a node
+function insertAfter(referenceNode, newNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
 // Function to hide a job posting
 function hideJobPosting(jobPosting) {
-  jobPosting.style.display = "none";
+  jobPosting.classList.toggle("hidden-job-posting");
+
+  // Create a badge element
+  const badge = document.createElement("div");
+  badge.textContent =
+    "Hidden: This job posting has been hidden by IS Company Blocker Extension.";
+  badge.classList.add("individual_internship", "hidden-badge");
+
+  // Append the badge to the job posting element
+  insertAfter(jobPosting, badge);
 }
 
 // Function to traverse the DOM and hide job postings
@@ -25,6 +39,7 @@ function hideContent() {
   const jobPostings = document.querySelectorAll(".individual_internship");
 
   for (const jobPosting of jobPostings) {
+    // Get company name of each job posting and hide if blocked
     const companyName = jobPosting
       .querySelectorAll(".company_and_premium")[0]
       ?.innerText.toLowerCase();

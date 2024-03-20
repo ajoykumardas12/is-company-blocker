@@ -1,0 +1,8 @@
+.hidden-job-posting {
+  display: none;
+}
+
+.hidden-badge {
+  opacity: 60%;
+  color: gray;
+}
