@@ -1,14 +1,19 @@
 // List of blocked companies
-const blockedList = [
-  "K-RITE",
-  "DeepThought Edutech Ventures Private Limited",
-  "Busibud",
-  "Blackcoffer",
-];
+let blockedCompanies = [];
+let blockedCompaniesSet;
 
-// Convert company names to lowercase and create new Set
-const blockedCompanies = blockedList.map((company) => company.toLowerCase());
-const blockedCompaniesSet = new Set(blockedCompanies);
+// Load the blocked list from storage
+chrome.storage.sync.get("blockedList", (data) => {
+  if (data.blockedList) {
+    blockedCompanies = data.blockedList.map((company) => company.toLowerCase());
+
+    // Create new Set from blocked companies and update set value
+    blockedCompaniesSet = new Set(blockedCompanies);
+
+    // Call the checkJobPostings function after loading the blocked list
+    checkJobPostings();
+  }
+});
 
 // Function to check if a company is blocked
 function isBlocked(company) {
@@ -44,8 +49,8 @@ function hideJobPosting(jobPosting) {
   insertAfter(jobPosting, badge);
 }
 
-// Function to traverse the DOM and hide job postings
-function hideContent() {
+// Function to traverse the DOM and check job postings
+function checkJobPostings() {
   const jobPostings = document.querySelectorAll(".individual_internship");
 
   for (const jobPosting of jobPostings) {
@@ -60,5 +65,12 @@ function hideContent() {
   }
 }
 
-// Call the function to hide job postings on page load
-window.addEventListener("load", hideContent);
+// Call the function to hide job postings on DOM load
+window.addEventListener("load", () => {
+  // Check if blockedCompaniesSet is not empty before running checkJobPostings
+  // This may run checkJobPostings() twice but ensures it runs atleast once
+  // even if race condition arise between loading blockedList and page load
+  if (blockedCompaniesSet) {
+    checkJobPostings();
+  }
+});

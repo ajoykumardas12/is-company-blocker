@@ -3,7 +3,7 @@
   "name": "IS company blocker",
   "version": "1.0",
   "description": "Block companies at Internshala",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": ["*://*.internshala.com/*"],
   "background": {
     "service_worker": "background.js"
@@ -14,5 +14,6 @@
       "js": ["content.js"],
       "css": ["content.css"]
     }
-  ]
+  ],
+  "options_page": "options.html"
 }
