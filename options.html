@@ -4,18 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Options - IS Company Blocker</title>
+    <link rel="stylesheet" href="styles/options.css" />
   </head>
   <body>
-    <h1>Company blocking options</h1>
-    <div>
-      <label for="blocked-list">Blocked Companies:</label>
-      <textarea id="blocked-list" rows="5"></textarea>
-      <p>
-        Enter the names of companies you want to block, with each name on a
-        separate line
-      </p>
+    <h1>Options - Internshala Company Blocker</h1>
+    <div class="options-container">
+      <div class="instructions">
+        <p>
+          ℹ Enter the names of companies you want to block, with each name on a
+          separate line.
+        </p>
+        <p>ℹ Names are case-insensitive.</p>
+      </div>
+
+      <div class="input-group">
+        <label for="blocked-list">Blocked Companies:</label>
+        <textarea
+          id="blocked-list"
+          class="blocked-list-input"
+          rows="5"
+          spellcheck="false"
+        ></textarea>
+      </div>
+
+      <button id="save-btn">Save</button>
     </div>
-    <button id="save-btn">Save</button>
+
     <script src="options.js"></script>
   </body>
 </html>

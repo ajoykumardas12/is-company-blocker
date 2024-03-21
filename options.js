@@ -4,7 +4,7 @@ const saveButton = document.getElementById("save-btn");
 // Load the blocked list from storage on page load
 chrome.storage.sync.get("blockedList", (data) => {
   blockedListTextarea.value = data.blockedList
-    ? data.blockedList.join("\n")
+    ? `${data.blockedList.join("\n")}\n`
     : "";
 });
 
