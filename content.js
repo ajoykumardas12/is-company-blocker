@@ -1,6 +1,13 @@
 // List of blocked companies
 let blockedCompanies = [];
 let blockedCompaniesSet;
+let isBlockingEnabled = true;
+
+// Check if blocking is disabled
+chrome.storage.sync.get("blockingEnabled", (data) => {
+  // Default to true if the value is not set
+  isBlockingEnabled = data.blockingEnabled ?? true;
+});
 
 // Load the blocked list from storage
 chrome.storage.sync.get("blockedList", (data) => {
@@ -51,6 +58,8 @@ function hideJobPosting(jobPosting) {
 
 // Function to traverse the DOM and check job postings
 function checkJobPostings() {
+  if (!isBlockingEnabled) return;
+
   const jobPostings = document.querySelectorAll(".individual_internship");
 
   for (const jobPosting of jobPostings) {

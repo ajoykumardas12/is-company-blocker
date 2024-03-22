@@ -61,6 +61,12 @@ function removeCompany(company) {
 }
 
 // Toggle blocking functionality
+chrome.storage.sync.get("blockingEnabled", (data) => {
+  // Default to true if the value is not set
+  const isBlockingEnabled = data.blockingEnabled ?? true;
+  toggleBlocking.checked = isBlockingEnabled;
+});
+
 toggleBlocking.addEventListener("change", () => {
   chrome.storage.sync.set({ blockingEnabled: toggleBlocking.checked });
 });
