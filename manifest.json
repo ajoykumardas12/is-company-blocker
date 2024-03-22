@@ -18,5 +18,11 @@
       "css": ["styles/content.css"]
     }
   ],
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "icons": {
+    "128": "images/isblocker128.png",
+    "48": "images/isblocker48.png",
+    "32": "images/isblocker32.png",
+    "16": "images/isblocker16.png"
+  }
 }
