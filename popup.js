@@ -1,13 +1,11 @@
 const companiesBlockedElement = document.getElementById("companies-blocked");
 const blockedListElement = document.getElementById("blocked-list");
-const moreLink = document.getElementById("more-link");
 const toggleBlocking = document.getElementById("toggle-blocking");
 const addCompanyForm = document.getElementById("add-company");
 const addCompanyInput = document.getElementById("add-company-input");
 const optionsLink = document.getElementById("options-link");
 
 let blockedCompanies = [];
-const maxDisplayedCompanies = 5;
 
 // Load the blocked list from storage on popup open
 chrome.storage.sync.get("blockedList", (data) => {
@@ -22,11 +20,7 @@ chrome.storage.sync.get("blockedList", (data) => {
 function renderBlockedList() {
   blockedListElement.innerHTML = "";
 
-  for (
-    let i = 0;
-    i < Math.min(blockedCompanies.length, maxDisplayedCompanies);
-    i++
-  ) {
+  for (let i = 0; i < blockedCompanies.length; i++) {
     const company = blockedCompanies[i];
     const li = document.createElement("li");
     const span = document.createElement("span");
@@ -38,9 +32,6 @@ function renderBlockedList() {
     li.appendChild(deleteButton);
     blockedListElement.appendChild(li);
   }
-
-  moreLink.style.display =
-    blockedCompanies.length > maxDisplayedCompanies ? "block" : "none";
 }
 
 // Update the count of blocked companies
