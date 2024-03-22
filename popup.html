@@ -12,17 +12,19 @@
       <span id="companies-blocked">0</span> companies blocked
     </div>
     <ul class="blocked-list" id="blocked-list"></ul>
-    <div class="toggle-container">
-      <input type="checkbox" id="toggle-blocking" />
-      <label for="toggle-blocking">Block Companies</label>
-    </div>
-    <form class="add-company" id="add-company">
+    <form class="add-company" id="add-company" autocomplete="off">
       <input type="text" id="add-company-input" placeholder="Add a company" />
       <button type="submit">Block</button>
     </form>
-    <div class="options-link">
-      <a href="#" id="options-link">Options</a>
+    <div class="toggle-container">
+      <input
+        type="checkbox"
+        class="toggle-blocking-input"
+        id="toggle-blocking"
+      />
+      <label for="toggle-blocking">Block Companies</label>
     </div>
+    <a href="#" id="options-link" class="options-link">More Options</a>
     <script src="popup.js"></script>
   </body>
 </html>

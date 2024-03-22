@@ -2,9 +2,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  align-items: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .options-container {
