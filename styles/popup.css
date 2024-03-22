@@ -31,9 +31,12 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.2rem;
   padding: 0.2rem 0.3rem;
   border-radius: 2px;
+}
+
+.blocked-list li:not(:last-child) {
+  margin-bottom: 0.2rem;
 }
 
 .blocked-list li:hover {

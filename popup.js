@@ -34,11 +34,21 @@ function renderBlockedList() {
     li.appendChild(deleteButton);
     blockedListElement.appendChild(li);
   }
+
+  blockedListElement.style.display =
+    blockedCompanies.length === 0 ? "none" : "block";
 }
 
 // Update the count of blocked companies
 function updateBlockedCompaniesCount() {
-  companiesBlockedElement.textContent = blockedCompanies.length;
+  const noOfCompanies = blockedCompanies.length;
+  if (noOfCompanies === 0) {
+    companiesBlockedElement.textContent =
+      "No company blocked. Add companies to block.";
+  } else
+    companiesBlockedElement.textContent = `${blockedCompanies.length} ${
+      noOfCompanies > 1 ? "companies" : "company"
+    } blocked`;
 }
 
 // Remove a company from the blocked list
