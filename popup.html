@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InternShala Company Blocker</title>
+    <link rel="stylesheet" href="styles/popup.css" />
+  </head>
+  <body>
+    <h1>InternShala Company Blocker</h1>
+    <div class="stats">
+      <span id="companies-blocked">0</span> companies blocked
+    </div>
+    <ul class="blocked-list" id="blocked-list"></ul>
+    <div class="more-link">
+      <a href="#" id="more-link">More...</a>
+    </div>
+    <div class="toggle-container">
+      <input type="checkbox" id="toggle-blocking" checked />
+      <label for="toggle-blocking">Disable Blocking</label>
+    </div>
+    <form class="add-company" id="add-company">
+      <input type="text" id="add-company-input" placeholder="Add a company" />
+      <button type="submit">Block</button>
+    </form>
+    <div class="options-link">
+      <a href="#" id="options-link">Options</a>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
