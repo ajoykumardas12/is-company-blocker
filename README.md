@@ -5,8 +5,8 @@ Works with Opera too.
 
 ## Built With
 
-- [JavaScript]
-- [CSS]
+- JavaScript
+- CSS
 
 ### Use
 
