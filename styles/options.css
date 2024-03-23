@@ -65,3 +65,20 @@ button {
 button:hover {
   background-color: var(--brand-dark);
 }
+
+.hidden-feedback-toggle-container {
+  margin: 0.8rem 0 0.6rem;
+  display: flex;
+  align-items: center;
+
+  input {
+    cursor: pointer;
+    accent-color: var(--brand-dark);
+  }
+
+  label {
+    margin-left: 0.4rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+}

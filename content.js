@@ -2,11 +2,18 @@
 let blockedCompanies = [];
 let blockedCompaniesSet;
 let isBlockingEnabled = true;
+let showHiddenFeedback = true;
 
 // Check if blocking is disabled
 chrome.storage.sync.get("blockingEnabled", (data) => {
   // Default to true if the value is not set
   isBlockingEnabled = data.blockingEnabled ?? true;
+});
+
+// Check if blocking is disabled
+chrome.storage.sync.get("showHiddenFeedback", (data) => {
+  // Default to true if the value is not set
+  showHiddenFeedback = data.showHiddenFeedback ?? true;
 });
 
 // Load the blocked list from storage
@@ -36,24 +43,26 @@ function insertAfter(referenceNode, newNode) {
 function hideJobPosting(jobPosting) {
   jobPosting.classList.toggle("hidden-job-posting");
 
-  // Create a badge element
-  const badge = document.createElement("div");
-  badge.textContent = "Hidden by IS Company Blocker Extension.";
-  badge.classList.add("individual_internship", "hidden-badge");
+  if (showHiddenFeedback) {
+    // Create a badge element
+    const badge = document.createElement("div");
+    badge.textContent = "Hidden by IS Company Blocker Extension.";
+    badge.classList.add("individual_internship", "hidden-badge");
 
-  // Create button to show job posting on click
-  const showJobPostingButton = document.createElement("button");
-  showJobPostingButton.textContent = "Show";
-  showJobPostingButton.classList.add("show-posting-button");
-  showJobPostingButton.addEventListener("click", () => {
-    jobPosting.classList.toggle("hidden-job-posting");
-    badge.remove();
-  });
+    // Create button to show job posting on click
+    const showJobPostingButton = document.createElement("button");
+    showJobPostingButton.textContent = "Show";
+    showJobPostingButton.classList.add("show-posting-button");
+    showJobPostingButton.addEventListener("click", () => {
+      jobPosting.classList.toggle("hidden-job-posting");
+      badge.remove();
+    });
 
-  badge.appendChild(showJobPostingButton);
+    badge.appendChild(showJobPostingButton);
 
-  // Append the badge to the job posting element
-  insertAfter(jobPosting, badge);
+    // Append the badge to the job posting element
+    insertAfter(jobPosting, badge);
+  }
 }
 
 // Function to traverse the DOM and check job postings
