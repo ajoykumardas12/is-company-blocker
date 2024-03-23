@@ -65,7 +65,7 @@ function checkJobPostings() {
   for (const jobPosting of jobPostings) {
     // Get company name of each job posting and hide if blocked
     const companyName = jobPosting
-      .querySelectorAll(".company_and_premium")[0]
+      .querySelectorAll(".company_name")[0]
       ?.innerText.toLowerCase();
 
     if (companyName && isBlocked(companyName)) {
