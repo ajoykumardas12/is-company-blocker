@@ -1,8 +1,6 @@
-// List of blocked companies
-let blockedCompanies = [];
 let blockedCompaniesSet;
-let isBlockingEnabled = true;
-let showHiddenFeedback = true;
+let isBlockingEnabled = true; // default true, updates to user set value
+let showHiddenFeedback = true; // default true, updates to user set value
 
 // Check if blocking is disabled
 chrome.storage.sync.get("blockingEnabled", (data) => {
@@ -19,7 +17,9 @@ chrome.storage.sync.get("showHiddenFeedback", (data) => {
 // Load the blocked list from storage
 chrome.storage.sync.get("blockedList", (data) => {
   if (data.blockedList) {
-    blockedCompanies = data.blockedList.map((company) => company.toLowerCase());
+    const blockedCompanies = data.blockedList.map((company) =>
+      company.toLowerCase()
+    );
 
     // Create new Set from blocked companies and update set value
     blockedCompaniesSet = new Set(blockedCompanies);
@@ -88,7 +88,7 @@ window.addEventListener("load", () => {
   // Check if blockedCompaniesSet is not empty before running checkJobPostings
   // This may run checkJobPostings() twice but ensures it runs atleast once
   // even if race condition arise between loading blockedList and page load
-  if (blockedCompaniesSet) {
+  if (blockedCompaniesSet.size !== 0) {
     checkJobPostings();
   }
 });
