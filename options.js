@@ -2,7 +2,7 @@ const blockedListTextarea = document.getElementById("blocked-list");
 const saveButton = document.getElementById("save-btn");
 const toggleHiddenFeedback = document.getElementById("toggle-hidden-feedback");
 
-// Load the blocked list from storage on page load
+// Load the blocked list from storage on page load and set textarea value
 chrome.storage.sync.get("blockedList", (data) => {
   blockedListTextarea.value = data.blockedList
     ? `${data.blockedList.join("\n")}\n`

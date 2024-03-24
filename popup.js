@@ -7,6 +7,8 @@ const optionsLink = document.getElementById("options-link");
 
 let blockedCompanies = [];
 
+const deleteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>`;
+
 // Load the blocked list from storage on popup open
 chrome.storage.sync.get("blockedList", (data) => {
   if (data.blockedList) {
@@ -15,8 +17,6 @@ chrome.storage.sync.get("blockedList", (data) => {
     updateBlockedCompaniesCount();
   }
 });
-
-const deleteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>`;
 
 // Render the blocked list in the popup
 function renderBlockedList() {
@@ -93,6 +93,7 @@ optionsLink.addEventListener("click", () => {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
   } else {
+    // Fallback in-case openOptionsPage not available/ Older chrome version
     window.open(chrome.runtime.getURL("options.html"));
   }
 });
