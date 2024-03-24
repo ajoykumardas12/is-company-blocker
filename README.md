@@ -30,6 +30,10 @@ To use this extension, you need to add to chrome manually.
 
 7. By default each hidden post will have a feedback for being hidden by the extension, you can turn off the feedback from extension options page.
 
+## Issues and Contributions
+
+Report any issues if you encounter. Contributions are also welcome.
+
 ## Clarification
 
 This extension is in no way associated with the Internshala company, only work of a user wanting some features to be available.
