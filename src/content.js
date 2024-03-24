@@ -88,7 +88,7 @@ window.addEventListener("load", () => {
   // Check if blockedCompaniesSet is not empty before running checkJobPostings
   // This may run checkJobPostings() twice but ensures it runs atleast once
   // even if race condition arise between loading blockedList and page load
-  if (blockedCompaniesSet.size !== 0) {
+  if (blockedCompaniesSet && blockedCompaniesSet.size !== 0) {
     checkJobPostings();
   }
 });

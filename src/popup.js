@@ -94,6 +94,6 @@ optionsLink.addEventListener("click", () => {
     chrome.runtime.openOptionsPage();
   } else {
     // Fallback in-case openOptionsPage not available/ Older chrome version
-    window.open(chrome.runtime.getURL("options.html"));
+    window.open(chrome.runtime.getURL("src/options.html"));
   }
 });
