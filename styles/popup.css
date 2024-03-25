@@ -25,6 +25,8 @@ h1 {
   border: 1px solid var(--light);
   border-radius: 5px;
   scrollbar-width: thin;
+  /* hidden by default, display: block when there are list items */
+  display: none;
 }
 
 .blocked-list li {
